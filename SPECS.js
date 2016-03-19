@@ -1,20 +1,28 @@
-app.factory('Floor', function(Tiaras, Building) {
-  return Tiaras.model(['floor', 'floors'], function(model) {
-    model.belongs_to(Building); // requires bus_id, will resolve to /buses/{bus_id}
+app.factory('Floors', function(Tiaras) {
+  return Tiaras.model('Floors', ['floor', 'floors'], function(model) {
+    model.belongs_to('Buildings'); // requires bus_id, will resolve to /buses/{bus_id}
   });
 });
 
-app.factory('Building', function(Tiaras, Floor) {
-  return Tiaras.model(['building', 'buildings'], function(model) {
-    model.has_many(Floor);
+app.factory('Buildings', function(Tiaras) {
+  return Tiaras.model('Buildings', ['building', 'buildings'], function(model) {
+    model.has_many('Floors');
   });
 });
 
-app.controller('TestCtrl', function(Building) {
-  Building.all.get().then(function(buildings) { // resolves to GET /buildings
-    var b = buildings.first();
-    b.floors.get().then(function(floors) { // resolves to GET /building/{id}/floors
-      //////////
-    });
-  });
-});
+//CREATION
+Buildings.create({name: "Tower"});
+Buildings.one(1).floors.create({number: 5});
+
+//READING
+Buildings.all.get();
+building.floors.get();
+Floors.one(3).get();
+
+//ACTIVE RECORD UPDATING
+floor.number = 5;
+floor.save();
+
+//DELETING
+floor.remove();
+Floors.one(2).remove();

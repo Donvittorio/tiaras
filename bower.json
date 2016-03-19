@@ -1,0 +1,21 @@
+{
+  "name": "tiaras",
+  "homepage": "https://github.com/Donvittorio/tiaras",
+  "authors": [
+    "Lorin Werthen <werthenlorin@gmail.com>"
+  ],
+  "description": "This Is Another Restful Angular Service",
+  "main": "lib/main.js",
+  "moduleType": [],
+  "keywords": [
+    "REST"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
